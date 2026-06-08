@@ -11,5 +11,4 @@ public class MainApplication {
 		temp.execute("insert into employee values('0','shivtej',1,4500,2026)");
 		System.out.println("Data Inserted");
 	}
-
 }
