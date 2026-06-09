@@ -12,7 +12,7 @@ public class JdbcApplication {
 		JdbcTemplate temp = (JdbcTemplate)context.getBean("temp");
 		if(temp != null)
 		{
-			Scanner sc = new Scanner(System.in);
+			Scanner sc = (Scanner)context.getBean("sc");
 			PreStatement p = (PreStatement)context.getBean("pmt");
 			System.out.print("Enter the name: ");
 			p.setName(sc.next());

@@ -1,5 +1,7 @@
 package com.InsertData;
 
+import java.util.Scanner;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,5 +21,10 @@ public class Config {
 	public JdbcTemplate getTemplate()
 	{
 		return new JdbcTemplate(this.getSource());
+	}
+	@Bean("sc")
+	public Scanner getScanner()
+	{
+		return new Scanner(System.in);
 	}
 }  
