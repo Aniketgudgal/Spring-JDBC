@@ -1,5 +1,7 @@
 package com.crud.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,5 +15,9 @@ public class EmpService {
 	public boolean insertEmployee(Employee emp)
 	{
 		return empRepo.insetEmployee(emp);
+	}
+	public List<Employee> getEmployees()
+	{
+		return empRepo.getEmployee();
 	}
 }

@@ -1,5 +1,6 @@
 package com.crud.Client;
 
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,6 +13,7 @@ public class CilentApplication {
 
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+		EmpService empService = (EmpService) context.getBean("empService");
 		int exit = 0;
 		Scanner sc = (Scanner) context.getBean("sc");
 		System.out.println("Welcome to CRUD Application");
@@ -30,14 +32,20 @@ public class CilentApplication {
 				e.setName(name);
 				e.setEmail(email);
 				e.setAge(age);
-				EmpService empService = (EmpService) context.getBean("empService");
-				if (empService.insertEmployee(e)) {
-					System.out.println("Employee Added Successfully...");
-				} else {
-					System.out.println("Problem to Add Employee");
+				try {
+					if (empService.insertEmployee(e)) {
+						System.out.println("Employee Added Successfully...");
+					} else {
+						System.out.println("Problem to Add Employee");
+					}
+				} catch (Exception e2) {
+					System.out.println("Problem to Add Employee Age Greate than 18: "+e2);
 				}
 				break;
-			
+			case 2:
+				List<Employee> al = empService.getEmployees();
+				al.forEach((emp)->System.out.println(emp.getId()+"\t"+emp.getName()+"\t"+emp.getEmail()+"\t"+emp.getAge()));
+				break;
 			case 5:
 				exit = 1;
 				System.out.println("Exit");

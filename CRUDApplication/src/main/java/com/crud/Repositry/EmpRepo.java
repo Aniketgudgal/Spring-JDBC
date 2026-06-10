@@ -1,5 +1,8 @@
 package com.crud.Repositry;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -17,5 +20,12 @@ public class EmpRepo {
 			t.setString(2, emp.getEmail());
 			t.setInt(3, emp.getAge());
 		}) > 0 ? true:false;
+	}
+	public List<Employee> getEmployee()
+	{
+		List<Employee> al = (List<Employee>) getTemplate.query("select * from Employee",(r,n) ->{
+			return new Employee(r.getInt(1), r.getString(2), r.getString(3), r.getInt(4));
+		});
+		return al;
 	}
 }
