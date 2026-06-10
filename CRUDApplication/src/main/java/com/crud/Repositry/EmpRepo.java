@@ -28,4 +28,28 @@ public class EmpRepo {
 		});
 		return al;
 	}
+	public boolean updateEmployee(int id, String name)
+	{
+		int result = getTemplate.update("update employee set emp_name = ? where emp_id = ?", (p) ->{ 
+			p.setString(1, name);
+			p.setInt(2, id);
+		});
+		return result > 0 ? true : false;
+	}
+	public boolean updateEmployee(int id, int age)
+	{
+		int result = getTemplate.update("update employee set age = ? where emp_id = ?", (p) -> {
+			p.setInt(1, age);
+			p.setInt(2, id);
+		});
+		return result > 0 ? true : false;
+	}
+	public boolean updateEmployeeEmail(int id, String email)
+	{
+		int result = getTemplate.update("update employee set email = ? where emp_id = ?",(p)-> {
+			p.setString(1, email);
+			p.setInt(2, id);
+		});
+		return result > 0 ? true : false;
+	}
 }

@@ -20,4 +20,16 @@ public class EmpService {
 	{
 		return empRepo.getEmployee();
 	}
+	public boolean updateEmployee(int id, String name)
+	{
+		return empRepo.updateEmployee(id, name);
+	}
+	public boolean updateEmployee(int id, int age)
+	{
+		return empRepo.updateEmployee(id, age);
+	}
+	public boolean updateEmployeeEmail(int id, String email)
+	{
+		return empRepo.updateEmployeeEmail(id, email);
+	}
 }

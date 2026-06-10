@@ -18,7 +18,8 @@ public class CilentApplication {
 		Scanner sc = (Scanner) context.getBean("sc");
 		System.out.println("Welcome to CRUD Application");
 		do {
-			System.out.println("1.Insert Employee \n2.View Employee \n3. Update Employee \n4. Delete Employee \n5. Exit");
+			System.out
+					.println("1.Insert Employee \n2.View Employee \n3. Update Employee \n4. Delete Employee \n5. Exit");
 			int choose = sc.nextInt();
 			switch (choose) {
 			case 1:
@@ -39,12 +40,57 @@ public class CilentApplication {
 						System.out.println("Problem to Add Employee");
 					}
 				} catch (Exception e2) {
-					System.out.println("Problem to Add Employee Age Greate than 18: "+e2);
+					System.out.println("Problem to Add Employee Age Greate than 18: " + e2);
 				}
 				break;
 			case 2:
 				List<Employee> al = empService.getEmployees();
-				al.forEach((emp)->System.out.println(emp.getId()+"\t"+emp.getName()+"\t"+emp.getEmail()+"\t"+emp.getAge()));
+				al.forEach((emp) -> System.out.println(emp));
+				break;
+			case 3:
+				System.out.println("Select Following Updates of Employee");
+				System.out.println("1. Name Update \n2. Email Update \n3. Age Update \n4.Exit");
+				int update = sc.nextInt();
+				switch (update) {
+				case 1:
+					System.out.println("Enter the Employee Id: ");
+					int id = sc.nextInt();
+					System.out.print("Enter the Name: ");
+					String empName = sc.next();
+					if (empService.updateEmployee(id, empName)) {
+						System.out.println("Name Updated Successfully.....");
+					} else {
+						System.out.println("Problem to Update Name");
+					}
+					break;
+				case 2:
+					System.out.println("Enter the Employee Id: ");
+					id = sc.nextInt();
+					System.out.print("Enter the Email Id: ");
+					String empEmail = sc.next();
+					if (empService.updateEmployeeEmail(id, empEmail)) {
+						System.out.println("Email Update Succesfully");
+					} else {
+						System.out.println("Problem to Update Email");
+					}
+					break;
+				case 3:
+					System.out.println("Enter the Employee Id: ");
+					id = sc.nextInt();
+					System.out.print("Enter the Age: ");
+					int empAge = sc.nextInt();
+					if (empService.updateEmployee(id, empAge)) {
+						System.out.println("Employee Age Updated Successfully...");
+					} else {
+						System.out.println("Problem to Update Age");
+					}
+					break;
+				case 4:
+					break;
+				default:
+					System.out.println("Enter Valid input");
+					break;
+				}
 				break;
 			case 5:
 				exit = 1;

@@ -14,4 +14,8 @@ public class Employee {
 	private String name;
 	private String email;
 	private int age;
+	@Override
+	public String toString() {
+		return id+"\t"+name+"\t"+email+"\t"+age;
+	}
 }
